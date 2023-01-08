@@ -1,0 +1,118 @@
+package aplicacao;
+
+import java.util.Scanner;
+
+import entidade.pensionato;
+
+public class programa {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int quartosvagos = 11;
+		pensionato[] vetor = new pensionato[11];
+
+		
+		System.out.println(" voce quer alugar um quarto? (1/sim) (2/nao)");
+		int resposta = sc.nextInt();
+		System.out.println();
+	
+		
+		if( resposta !=2) {
+			System.out.println(" Voce quer alugar quantos quartos? ");
+			int quartoscliente = sc.nextInt();
+				if( quartoscliente < quartosvagos) {
+				quartosvagos = quartosvagos - quartoscliente ;
+				for (int i = 1; i <= quartoscliente; i++ ) {
+				
+				System.out.println();
+				System.out.println(" cliente: " +i);
+				System.out.println(" digite o seu nome ");
+				String nome = sc.next();
+				
+				System.out.println(" digite o seu email ");
+				String email = sc.next();
+				
+				System.out.println(" Qual quarto voce quer? ");
+				int quarto = sc.nextInt();
+				
+				vetor[quarto] = new pensionato(nome, email);
+				
+				
+				
+			}
+				System.out.println();
+				System.out.println(" Quartos alugados");
+				for(int i=0; i<10; i++) {
+					if(vetor[i] != null) {
+						System.out.println(	" o quarto: " +	i + " esta alugado pelo " + vetor[i]);
+					}
+				}
+				System.out.println();
+				System.out.println(" ainda tem " + quartosvagos + " quartos vagos");
+				
+				
+				
+		}else {
+			System.out.println(" Não temos essa quantidade de quartos vagos no momento ");
+		}
+			
+			
+		}else {
+			System.out.println(" volte sempre ");
+		}
+		
+		
+
+			sc.close();
+			
+	}
+			
+
+
+}
+
+
+
+
+package entidade;
+
+public class pensionato {
+	
+	private String nome;
+	private String email;
+
+
+	
+	public pensionato(String nome, String email) {
+		this.nome = nome;
+		this.email = email;
+
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
+	public void apresentarCliente() {
+		System.out.println(" nome: " + getNome());
+		System.out.println(" email: " + getEmail());
+	}
+	
+	public String toString() {
+		return nome + " que tem o email: " + email;
+	}
+}

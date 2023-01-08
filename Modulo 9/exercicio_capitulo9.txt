@@ -1,0 +1,212 @@
+package aplicacao;
+
+import java.util.Scanner;
+
+import entidade.classe_conta;
+
+public class programa {
+
+	public static void main(String[] args) {		
+		Scanner sc = new Scanner(System.in);
+		
+		int taxa = 5;
+		
+		classe_conta conta1 = new classe_conta();
+		
+		
+		System.out.println("Qual o numero da sua conta? ");
+		int numeroConta = sc.nextInt();
+		conta1.setNumeroConta(numeroConta);
+		
+		System.out.println();
+		
+		System.out.println("Qual o seu nome? ");
+		String nome = sc.next();	
+		conta1.setNomeTitular(nome);
+		
+		System.out.println();
+		
+		System.out.println("Voce quer fazer um deposito inicial (1 para sim/2 para não) ");
+		int resposta = sc.nextInt();	
+		
+		System.out.println();
+		
+		if ( resposta != 1) {
+			
+			System.out.println("Deposite um valor na sua conta");
+			double acrescentarValor = sc.nextInt();
+			
+			System.out.println();
+			
+			double saldoAcrecentado = acrescentarValor;
+			
+			System.out.println("Atualização das infomações: ");
+			
+			conta1.ApresentarConta();
+			System.out.println("O seu saldo agora é " + acrescentarSaldo(saldoAcrecentado,acrescentarValor));
+			
+			
+			System.out.println();
+			
+			System.out.println("Saque um valor da conta ");
+			double diminuirValor = sc.nextInt();
+			
+			System.out.println();
+	
+			
+			
+			double Saldosacar = saldoAcrecentado - diminuirValor - taxa;
+			
+			System.out.println("Atualização das infomações: ");
+			
+			
+			conta1.ApresentarConta();
+			System.out.println("O seu saldo agora é " + sacarSaldo(Saldosacar,diminuirValor));
+			System.out.println("5 reais foram taxados do seu saque");
+			
+			
+			
+		}else {
+
+		
+			System.out.println("Quanto voce quer depositar? ");
+			double depositoInicial = sc.nextDouble();
+			conta1.setDepositoInicial(depositoInicial);
+		
+			System.out.println();
+			
+			conta1.ApresentarConta();
+			System.out.println("O seu deposito inicial é " + depositoInicial);
+			
+			System.out.println();
+		
+			System.out.println("Deposite mais um valor na sua conta");
+			double acrescentarValor = sc.nextInt();
+			
+			System.out.println();
+			
+			double saldoAcrecentado = acrescentarValor + depositoInicial;
+			
+			System.out.println("Atualização das infomações: ");
+			
+			conta1.ApresentarConta();
+			System.out.println("O seu saldo agora é " + acrescentarSaldo(saldoAcrecentado,acrescentarValor));
+			
+			System.out.println();
+			
+			System.out.println("Saque um valor da conta ");
+			double diminuirValor = sc.nextInt();
+			
+			System.out.println();
+			
+			double Saldosacar = saldoAcrecentado - diminuirValor - taxa;
+			
+			System.out.println("Atualização das infomações: ");
+			
+			
+			conta1.ApresentarConta();
+			System.out.println("O seu saldo agora é " + sacarSaldo(Saldosacar,diminuirValor));
+			System.out.println("5 reais foram taxados do seu saque");
+		}
+		
+
+		
+		
+		sc.close();
+				
+	}
+
+	private static double sacarSaldo(double saldo, double diminuirValor) {
+		
+		return saldo;
+	}
+
+	private static double acrescentarSaldo(double saldo, double acrescentarValor) {
+	
+		return saldo;
+	}
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package entidade;
+
+public class classe_conta {
+
+	public String nomeTitular;
+	private int numeroConta;
+	private double depositoInicial;
+	private double saldo;
+	
+	
+
+	public String getNomeTitular() {
+		return nomeTitular;
+	}
+	
+	public void setNomeTitular(String nomeTitular) {
+		this.nomeTitular = nomeTitular;
+	}
+	
+	public double getNumeroConta() {
+		return numeroConta;
+	}
+	
+	public void setNumeroConta(int numeroConta) {
+		this.numeroConta = numeroConta;
+	}
+
+	public double getDepositoInicial() {
+		return depositoInicial;
+	}
+	
+	public void setDepositoInicial(double depositoInicial) {
+		this.depositoInicial = depositoInicial;
+	}
+		
+	public double getsaldo() {
+		return saldo;
+		
+	}
+	
+	public double acrescentarSaldo(double saldoAcrecentado, double acrescentarValor) {
+		saldo = depositoInicial + acrescentarValor;
+		return saldo;
+	}
+	
+	public double sacarSaldo(double saldoSacar, double diminuirValor) {
+		saldo = depositoInicial  - diminuirValor;
+		return saldo;
+	}
+	
+	
+	
+	
+	public void ApresentarConta() {
+		System.out.println("Numero da conta: " + getNumeroConta());
+		System.out.println("Nome titular da conta: " + getNomeTitular());
+		
+	}
+
+	
+	
+	
+}
+
